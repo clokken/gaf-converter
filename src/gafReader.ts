@@ -29,7 +29,7 @@ function readEntry(buffer: Buffer, offset: number): GafEntry {
         ENTRY_HEADER, offset);
     let nameBuffer = entryHeader.at(ENTRY_HEADER.fields.Name);
     let name = nameBuffer.toString('ascii', 0, nameBuffer.length)
-        .replace(/\0/g, '');;
+        .replace(/\0/g, '').trim();
     let frameCount = entryHeader.valueAt(ENTRY_HEADER.fields.Frames);
     let frames: GafFrame[] = [];
 
